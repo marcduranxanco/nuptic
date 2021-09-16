@@ -7,8 +7,8 @@ It has a makefile that allows you to perform the main actions.
 ## Create a new project and first run
 - Merge the current branch to main `git merge --allow-unrelated-histories -s ours main && git checkout main && git merge docker-laravel-mysql && git branch -D docker-laravel-mysql`
 - Create the project with `make create`
-- Set up the project with `make setup` [WARNING] - This environtment is for development purposes. This command, makes unsafe environtment for security
 - Start the project `make up`
+- Set up the project with `make setup` [WARNING] - This environtment is for development purposes. This command, makes unsafe environtment for security
 
 
 ## Update the database environtment variables
