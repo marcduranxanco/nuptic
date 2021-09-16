@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Simulador\SimuladorNuptic43Controller;
+use App\Servidor\ServidorNuptic43Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/simulador', [SimuladorNuptic43Controller::class, 'run']);
+Route::get('/servidor', [ServidorNuptic43Controller::class, 'run']);
