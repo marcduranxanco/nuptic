@@ -38,7 +38,7 @@ class Simulador implements SimuladorInterface
      */
     protected function createUrl() : string
     {
-        return "http://{$this->domain}/nuptic43server?simulatorName={$this->simulatorName}&idRequest={$this->idRequest}&direction={$this->direction}&route={$this->route}";
+        return "http://{$this->domain}/servidor?simulatorName={$this->simulatorName}&idRequest={$this->idRequest}&direction={$this->direction}&route={$this->route}";
     }
 
     /**
