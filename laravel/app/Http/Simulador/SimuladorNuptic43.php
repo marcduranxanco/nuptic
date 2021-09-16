@@ -6,7 +6,7 @@ use App\Http\Requests\Nuptic43Request;
 use Exception;
 
 define("INTERVAL", 1 ); // Intervalo segundos ejecución
-define("MAXREQUESTS", 10 ); // Intervalo segundos que se ejecuta el proceso
+define("MAXREQUESTS", 5 ); // Intervalo segundos que se ejecuta el proceso
 
 class SimuladorNuptic43 extends Simulador
 {
@@ -29,7 +29,7 @@ class SimuladorNuptic43 extends Simulador
     public function simulate() {
         $counter = 1;
         $active = true;
-        $request = [];
+        $requests = [];
 
         while($active) {
             sleep(INTERVAL);
