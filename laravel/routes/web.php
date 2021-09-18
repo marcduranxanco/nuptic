@@ -15,5 +15,9 @@ use App\Servidor\ServidorOrbal;
 |
 */
 
+Route::get('/', function () {
+    return "Wellcome to la tierra ORNI (Objeto Reqüestador No Identificado)";
+});
+
 Route::get('/simulador', [SimuladorNuptic43Controller::class, 'run']);
 Route::get('/servidor', [ServidorOrbal::class, 'run']);
