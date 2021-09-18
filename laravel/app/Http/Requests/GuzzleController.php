@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 class GuzzleController extends Controller
 {
-    private string $url;
+    protected string $url;
 
     function __construct(string $url) {
         $this->url = $url;
@@ -14,9 +14,12 @@ class GuzzleController extends Controller
     public function createRequest()
     {
         $client = new \GuzzleHttp\Client(['verify' => false]);
-        $request = $client->get($this->url);
-        $response = $request->getBody()->getContents();
-
+        try {
+            $request = $client->get($this->url);
+            $response = $request->getBody()->getContents();
+        } catch (\Throwable $th) {
+            $response = $th;
+        }
         return $response;
     }
 }

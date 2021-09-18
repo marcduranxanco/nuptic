@@ -8,6 +8,13 @@ class Nuptic43Request extends GuzzleController
     }
 
     function createRequest(){
-        parent::createRequest();
+        $client = new \GuzzleHttp\Client(['verify' => false]);
+        try {
+            $request = $client->get($this->url);
+            $response = $request->getBody()->getContents();
+        } catch (\Throwable $th) {
+            $response = $th;
+        }
+        return $response;
     }
 }
