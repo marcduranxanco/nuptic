@@ -7,13 +7,13 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
-class ServidorNuptic43Controller extends BaseController
+class ServidorOrbal extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function run()
     {
-        return "hola";
+        return "test";
         // $simulador = new ServidorNuptic43();
         // return $simulador->simulate();
     }

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Simulador\SimuladorNuptic43Controller;
-use App\Servidor\ServidorNuptic43Controller;
+use App\Servidor\ServidorOrbal;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +16,4 @@ use App\Servidor\ServidorNuptic43Controller;
 */
 
 Route::get('/simulador', [SimuladorNuptic43Controller::class, 'run']);
-Route::get('/servidor', [ServidorNuptic43Controller::class, 'run']);
+Route::get('/servidor', [ServidorOrbal::class, 'run']);
