@@ -26,6 +26,7 @@
             "App\\Requests\\": "app/Http/Requests/",
             "App\\Simulador\\": "app/Http/Simulador/",
             "App\\Servidor\\": "app/Http/Servidor/",
+            "App\\Nuptic43\\": "app/Http/Nuptic43/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
