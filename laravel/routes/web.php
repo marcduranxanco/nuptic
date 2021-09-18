@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Simulador\SimuladorNuptic43Controller;
-use App\Servidor\ServidorOrbal;
+use App\Servidor\ServidorOrbalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +19,12 @@ Route::get('/', function () {
     return "Wellcome to la tierra ORNI (Objeto Reqüestador No Identificado)";
 });
 
+/**
+ * Llamada al simulador
+ */
 Route::get('/simulador', [SimuladorNuptic43Controller::class, 'run']);
-Route::get('/servidor', [ServidorOrbal::class, 'run']);
+
+/**
+ * Recibe las llamadas generadas por el simulador
+ */
+Route::get('/servidor', [ServidorOrbalController::class, 'run']);
