@@ -27,11 +27,12 @@ class Simulador implements SimuladorInterface
     }
 
     /**
-     * Simulador, solo crear una request por defecto, si otros simuladores necesitan otro
-     * comportamiento, deben sobrecargar este método
+     * Debe crear una request y comprobar que los parámetros son válidos
      */
-    public function simulate(){
-        $this->createRequest($this->url);
+    public function createRequest()
+    {
+        $request = new GuzzleController($this->url);
+        return $request->createRequest();
     }
 
     /**
@@ -41,15 +42,5 @@ class Simulador implements SimuladorInterface
     {
         $params = urlencode(json_encode($this->params));
         return "http://{$this->domain}/servidor?p={$params}";
-    }
-
-    /**
-     * Debe crear una request y comprobar que los parámetros son válidos
-     * @param string $url Genera la url a la que se tiene que hacer la petición
-     */
-    protected function createRequest(string $url)
-    {
-        $request = new GuzzleController($url);
-        return $request->createRequest();
     }
 }

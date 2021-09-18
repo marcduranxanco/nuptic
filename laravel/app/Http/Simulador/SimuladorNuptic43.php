@@ -5,9 +5,6 @@ namespace App\Simulador;
 use App\Http\Requests\Nuptic43Request;
 use Exception;
 
-define("INTERVAL", 1 ); // Intervalo segundos ejecución
-define("MAXREQUESTS", 5 ); // Intervalo segundos que se ejecuta el proceso
-
 class SimuladorNuptic43 extends Simulador
 {
     private array       $directions = array("Norte", "Sur", "Este", "Oeste");
@@ -26,43 +23,47 @@ class SimuladorNuptic43 extends Simulador
     }
 
     /**
+     * Realiza la petición al servidor y comprueba que ha recibido una respuesta correcta. Si no es correcta, repite la petición
+     */
+    public function createRequest(){
+        $request = new Nuptic43Request($this->url);
+        return $request->createRequest();
+    }
+
+    /**
      * Crea las request que se indican en la constante MAXREQUESTS
      */
-    public function simulate() {
-        $counter = 1;
-        $active = true;
-        $requests = [];
+    // public function simulate() {
 
-        while($active) {
-            sleep(INTERVAL);
-            $this->idRequest = $counter;
-            $this->createUrl();
-            try {
-                $request = $this->createRequest($this->url);
-            } catch (\Throwable $th) {
-                $request = $th;
-            }
-            array_push($requests, $request);
-            $counter++;
-            $active = ($counter <= MAXREQUESTS);
-        }
+    //     /*
+    //         tiene qwue llamar al comando, que recibe por parámetro cuantas veces se tienew que ejecutar
+    //         el create request
+    //     */
 
-        return $request;
-    }
+    //     $counter = 1;
+    //     $active = true;
+    //     $requests = [];
+
+    //     while($active) {
+    //         sleep(INTERVAL);
+    //         $this->idRequest = $counter;
+    //         $this->createUrl();
+    //         try {
+    //             $request = $this->createRequest($this->url);
+    //         } catch (\Throwable $th) {
+    //             $request = $th;
+    //         }
+    //         array_push($requests, $request);
+    //         $counter++;
+    //         $active = ($counter <= MAXREQUESTS);
+    //     }
+
+    //     return $request;
+    // }
 
     private function createDirection() : string
     {
         $randomIndex = array_rand($this->directions, 1);
         return $this->directions[$randomIndex];
-    }
-
-    protected function createRequest($url){
-        if(rand(0, 100) > 90){
-            $request = new Nuptic43Request($url);
-            return $request->createRequest();
-        }
-        else{
-            throw new Exception("Error Processing the Nuptic43Request.", 1);
-        }
     }
 }
