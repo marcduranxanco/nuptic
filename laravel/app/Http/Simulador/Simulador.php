@@ -8,20 +8,21 @@ use App\Simulador\SimuladorInterface;
 
 class Simulador implements SimuladorInterface
 {
+    protected array     $params = [];
     protected string    $domain;
-    protected string    $simulatorName;
-    protected int       $idRequest;
-    protected string    $direction;
-    protected string    $route;
     protected string    $url;
 
-    public function __construct(string $domain, string $simulatorName, int $idRequest, string $direction, string $route)
+    /**
+     * El constructor recoge parámetros básicos de un simulador
+     * @param string $domain Dominio del servidor (pe. Ejemplo.com)
+     * @param string $simulatorName Nombre del simulador (pe. Nuptic43)
+     * @param int $idRequest Identificador único la petición
+     */
+    public function __construct(string $domain, string $simulatorName, int $idRequest)
     {
         $this->domain = $domain;
-        $this->simulatorName = $simulatorName;
-        $this->idRequest = $idRequest;
-        $this->direction = $direction;
-        $this->route = $route;
+        $this->params["simulatorName"] = $simulatorName;
+        $this->params["idRequest"] = $idRequest;
         $this->url = $this->createUrl();
     }
 
@@ -38,11 +39,13 @@ class Simulador implements SimuladorInterface
      */
     protected function createUrl() : string
     {
-        return "http://{$this->domain}/servidor?simulatorName={$this->simulatorName}&idRequest={$this->idRequest}&direction={$this->direction}&route={$this->route}";
+        $params = urlencode(json_encode($this->params));
+        return "http://{$this->domain}/servidor?p={$params}";
     }
 
     /**
      * Debe crear una request y comprobar que los parámetros son válidos
+     * @param string $url Genera la url a la que se tiene que hacer la petición
      */
     protected function createRequest(string $url)
     {
