@@ -10,17 +10,19 @@ define("MAXREQUESTS", 5 ); // Intervalo segundos que se ejecuta el proceso
 
 class SimuladorNuptic43 extends Simulador
 {
-    private array $directions = array("Norte", "Sur", "Este", "Oeste");
+    private array       $directions = array("Norte", "Sur", "Este", "Oeste");
+    protected string    $route;
 
-    public function __construct(string $domain)
+    /**
+     * Simulador Nuptic43
+     * @param string $domain Dominio del servidor Orbal
+     * @param int $idRequest Identificador de la request
+     */
+    public function __construct(string $domain, int $idRequest)
     {
-        $this->domain = $domain;
-        $this->simulatorName = "nuptic-43";
-        $this->idRequest = 0;
-        $this->direction = $this->createDirection();
-        $this->route = rand(10, 20);
-
-        parent::__construct($this->domain, $this->simulatorName, $this->idRequest, $this->direction, $this->route);
+        $this->params["direction"] = $this->createDirection();
+        $this->params["route"] = rand(10, 20);
+        parent::__construct($domain, "nuptic-43", $idRequest);
     }
 
     /**
