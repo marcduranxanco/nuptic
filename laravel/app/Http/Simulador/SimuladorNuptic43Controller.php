@@ -20,7 +20,7 @@ class SimuladorNuptic43Controller extends BaseController
         // Tiene que llamar al comando que se encarga de hacer las 60 peticiones
         // Comand::NombreComando(MAXREQUESTS (cuantas se hacen), INTAVL (cada cuanto tiempo))
 
-        $simulador = new SimuladorNuptic43("localhost", 123445);
+        $simulador = new SimuladorNuptic43("nginx", 123445);
         return $simulador->createRequest();
     }
 }
