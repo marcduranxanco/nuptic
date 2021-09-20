@@ -13,8 +13,7 @@ class ServidorOrbal extends Servidor
     // - En la peticion 60 indica al simulación que ha terminado la simulación y devuelve los resultados
     public function __construct(Nuptic43 $nuptic43)
     {
-        if (!$this->randomError())
-            $this->run();
+        $this->response = new Response;
 
         return $this->response;
     }
@@ -23,10 +22,7 @@ class ServidorOrbal extends Servidor
         // Genera el identificador único y lo devuelve en la response
         // Debe guardar en db la response
         // Debe indicar que se ha acabado la simulación????
-        $data = [];
-        $data['id'] = uniqid();
-        $data['status'] = 'success';
-        $this->response = new Response(json_encode($data), 200);
+        $this->setResponse($this->isSuccess());
         return $this->response;
     }
 
@@ -34,16 +30,19 @@ class ServidorOrbal extends Servidor
      * Decide si la petición está en el 10% errónea. Si no es válida setea la response correspondiente
      * @return bool
      */
-    private function randomError() : bool
+    private function isSuccess() : bool
     {
-        $return = false;
-        $data = [];
-        $data['id'] = -1;
-        $data['status'] = 'error';
-        if(rand(1, 100) <= 10) {
-            $this->response = new Response(json_encode($data), 418);
-            $return = true;
-        }
-        return $return;
+        $random = rand(1, 100);
+        return ($random >= 10);
     }
+
+    private function setResponse(bool $success){
+        $data = [];
+        $data['id'] = $success ?  uniqid() : -1;
+        $data['status'] = $success ?  'success' : 'error';
+        $code = 200;
+        $this->response->setContent(json_encode($data));
+        $this->response->setStatusCode($code, "Random Orbal server error");
+    }
+
 }
