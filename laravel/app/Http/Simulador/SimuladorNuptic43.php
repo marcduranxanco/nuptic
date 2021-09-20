@@ -13,7 +13,7 @@ class SimuladorNuptic43 extends Simulador
     /**
      * Simulador Nuptic43
      * @param string $domain Dominio del servidor Orbal
-     * @param int $idRequest Identificador de la request
+     * @param int $idRequest Un identificador secuencial del 1 al 60
      */
     public function __construct(string $domain, int $idRequest)
     {
@@ -29,37 +29,6 @@ class SimuladorNuptic43 extends Simulador
         $request = new Nuptic43Request($this->url);
         return $request->createRequest();
     }
-
-    /**
-     * Crea las request que se indican en la constante MAXREQUESTS
-     */
-    // public function simulate() {
-
-    //     /*
-    //         tiene qwue llamar al comando, que recibe por parámetro cuantas veces se tienew que ejecutar
-    //         el create request
-    //     */
-
-    //     $counter = 1;
-    //     $active = true;
-    //     $requests = [];
-
-    //     while($active) {
-    //         sleep(INTERVAL);
-    //         $this->idRequest = $counter;
-    //         $this->createUrl();
-    //         try {
-    //             $request = $this->createRequest($this->url);
-    //         } catch (\Throwable $th) {
-    //             $request = $th;
-    //         }
-    //         array_push($requests, $request);
-    //         $counter++;
-    //         $active = ($counter <= MAXREQUESTS);
-    //     }
-
-    //     return $request;
-    // }
 
     private function createDirection() : string
     {
