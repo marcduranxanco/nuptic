@@ -25,7 +25,7 @@ services:
     entrypoint: vendor/bin/phpunit
 
   fpm:
-    build: fpm.dockerfile
+    build: fpm/.
     restart: always
     volumes:
       - ../laravel:/app
