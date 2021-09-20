@@ -25,7 +25,7 @@ services:
     entrypoint: vendor/bin/phpunit
 
   fpm:
-    image: php:8.0.3-fpm
+    build: fpm.dockerfile
     restart: always
     volumes:
       - ../laravel:/app
@@ -49,3 +49,4 @@ services:
       - MYSQL_ROOT_PASSWORD=Default-Root-Password
     volumes:
       - ./mysql/scripts/:/docker-entrypoint-initdb.d/
+      - ./mysql/data/:/var/lib/mysql

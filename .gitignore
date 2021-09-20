@@ -1,4 +1,5 @@
 docker/nginx/*
+docker/mysql/data
 !docker/nginx/conf
 docker/.cache
 .cache

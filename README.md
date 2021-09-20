@@ -20,3 +20,10 @@
 ## EJECUCIÓN DEL PROYECTO
 - Start the project `make up`
 - Set up the project with `make setup` [WARNING] - This environtment is for development purposes. This command, makes unsafe environtment for security
+
+## ENDPOINTS
+/simulador: ejecuta el comando
+| Endpoint | Descripción | Parámetros | Respuesta |
+| ------------- | ------------- | ------------- | ------------- |
+| /simulador | Ejecuta el comando para realizar la simulación de 60 peticiones al servidor | - | {"execution": "success"} |
+| /servidor | Recibe las peticiones ejecutadas por el simulador | p: Json con los parámetros obligatorios por url codificada (ej: p=%7B"direction"%3A"Sur"%2C"route"%3A"10"%2C"simulatorName"%3A"nuptic-43"%2C"idRequest"%3A"1"%7D) | {"id": "61477ac7a7998", "status": "success"}
