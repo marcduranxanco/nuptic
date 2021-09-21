@@ -17,7 +17,10 @@ dump:
 	docker-compose -f ./docker/docker-compose.yml run --rm composer -- dump
 
 php:
-	docker-compose -f ./docker/docker-compose.yml run --rm fpm bash
+	docker-compose -f ./docker/docker-compose.yml run fpm bash
+
+migrate:
+	docker-compose -f ./docker/docker-compose.yml run fpm php artisan migrate
 
 phpunit:
 	docker-compose -f ./docker/docker-compose.yml run --rm phpunit tests

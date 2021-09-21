@@ -17,14 +17,15 @@
 - Mostrar la suma del recorrido y el punto cardinal más frecuente
 - Mostrar una gráfica con valores de la simulación
 
-## EJECUCIÓN DEL PROYECTO
-- Start the project `make up`
-- Set up the project with `make setup` [WARNING] - This environtment is for development purposes. This command, makes unsafe environtment for security
+## PRIMERA EJECUCIÓN DEL PROYECTO
+- Iniciar el proyecto `make up`
+- Realizar el setup `make setup`
+- Ejecutar las migraciiones `make migration`
 
 ## ENDPOINTS
 /simulador: ejecuta el comando
 | Endpoint | Descripción | Parámetros | Respuesta |
 | ------------- | ------------- | ------------- | ------------- |
-| /simulador | Ejecuta el comando para realizar la simulación de 60 peticiones al servidor | - | {"execution": "success"} |
+| /simulador | Ejecuta el job para realizar la simulación de 60 peticiones al servidor | - | {"execution": "success"} |
 | /servidor | Recibe las peticiones ejecutadas por el simulador | p: Json con los parámetros obligatorios por url codificada (ej: p=%7B"direction"%3A"Sur"%2C"route"%3A"10"%2C"simulatorName"%3A"nuptic-43"%2C"idRequest"%3A"1"%7D) | {"id": "61477ac7a7998", "status": "success"}
 | /servidor/get | Obtiene todas las peticiones registradas |  | [{"id":1,"created_at":null,"updated_at":null,"internalId":"1234","requestName":"1234","requestNumber":1234,"direction":"1234","route":1234},{"id":2,"created_at":null,"updated_at":null,"internalId":"1111","requestName":"1111","requestNumber":1111,"direction":"1111","route":1111}] 
