@@ -17,7 +17,7 @@ dump:
 	docker-compose -f ./docker/docker-compose.yml run --rm composer -- dump
 
 php:
-	docker-compose -f ./docker/docker-compose.yml run --rm php bash
+	docker-compose -f ./docker/docker-compose.yml run --rm fpm bash
 
 phpunit:
 	docker-compose -f ./docker/docker-compose.yml run --rm phpunit tests
