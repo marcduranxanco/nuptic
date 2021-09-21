@@ -27,4 +27,7 @@ Route::get('/simulador', [SimuladorNuptic43Controller::class, 'run']);
 /**
  * Recibe las llamadas generadas por el simulador
  */
-Route::get('/servidor', [ServidorOrbalController::class, 'run']);
+Route::group(['prefix'=>'servidor'], function(){
+    Route::get('/', [ServidorOrbalController::class, 'run']);
+    Route::get('/get', [ServidorOrbalController::class, 'getAll']);
+});
