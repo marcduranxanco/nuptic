@@ -46,12 +46,9 @@ class SimuladorNuptic43Comando extends Command
                 $arrayResponse = json_decode($response->getBody()->getContents());
                 $requestSuccess = ($arrayResponse->status != 'success');
 
-                echo "\n$i\n";
-                echo json_encode($arrayResponse);
-
             } while ($requestSuccess);
 
         }
-        return 0;
+        return "Nuptic simulation completed";
     }
 }
