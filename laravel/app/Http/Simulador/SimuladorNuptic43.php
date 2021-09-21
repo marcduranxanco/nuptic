@@ -26,8 +26,13 @@ class SimuladorNuptic43 extends Simulador
      * Realiza la petición al servidor y comprueba que ha recibido una respuesta correcta. Si no es correcta, repite la petición
      */
     public function createRequest(){
-        $request = new Nuptic43Request($this->url);
-        return $request->createRequest();
+        try {
+            $request = new Nuptic43Request($this->url);
+            $return = $request->createRequest();
+        } catch (\Throwable $th) {
+            $return = $th;
+        }
+        return $return;
     }
 
     private function createDirection() : string
