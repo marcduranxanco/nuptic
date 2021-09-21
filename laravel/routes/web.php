@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Simulador\SimuladorNuptic43Controller;
 use App\Servidor\ServidorOrbalController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,7 @@ use App\Servidor\ServidorOrbalController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return "Wellcome to la tierra ORNI (Objeto Reqüestador No Identificado)";
-});
+Route::get('/', [HomeController::class, 'run']);
 
 /**
  * Llamada al simulador
