@@ -2,6 +2,7 @@
 
 namespace App\Servidor;
 
+use App\Models\AlienRequests;
 use App\Nuptic43\Nuptic43;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -16,13 +17,14 @@ class ServidorOrbalController extends BaseController
     public function run(Request $request)
     {
         $params = json_decode($request->input('p'));
-        $nuptic43 = new Nuptic43(
-            (int) $params->idRequest,
-            (int) $params->direction,
-            $params->route,
-            $params->simulatorName,
-        );
-        $server = new ServidorOrbal($nuptic43);
+
+        $server = new ServidorOrbal($params);
         return $server->run();
+    }
+
+    public function getAll()
+    {
+        $requests = AlienRequests::get();
+        return $requests->toJson();
     }
 }
